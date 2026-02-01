@@ -7,15 +7,31 @@
   home.packages = [
     pkgs.lazygit
     pkgs.neovim
+    pkgs.zoxide
+    pkgs.tldr
+
     pkgs.vscode
     pkgs.anki
+    
+    pkgs.dotnetCorePackages.sdk_10_0-bin
+    pkgs.javaPackages.compiler.openjdk17
+    
+    pkgs.signal-desktop
+    pkgs.blender
+    
+    pkgs.whatsapp-electron
+    pkgs.thunderbird
+    pkgs.obsidian
   ];
+
+  home.shellAliases = {
+    blender = "nixGLNvidia blender";
+  };
 
   xdg.enable = true;
   xdg.mime.enable = true;
-  programs.neovim.enable = true;
-  programs.anki.enable = true;
-  xdg.systemDirs.data = [ "$HOME/.local/share" ];
+  xdg.systemDirs.data = [ "$HOME/.local/state/nix/profiles/home-manager/home-path/share/applications" ];
+  targets.genericLinux.enable = true;
   xdg.desktopEntries = {
     neovim = {
       name = "Neovim";

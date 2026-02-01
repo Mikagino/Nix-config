@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Switch Nix Home Manager
+Comment=Switch (reload+install) the Nix Home Manager config and move .desktop to correct directory
+Exec=bash -c "nix run --extra-experimental-features nix-command --extra-experimental-features flakes home-manager switch ; echo Moving .desktop files... ; sudo mv $HOME/.local/state/nix/profiles/home-manager/home-path/share/applications/* /usr/share/applications/ ; echo Finished nix switch, press key to leave... ; read -N 1 ; echo \n"
+Icon=/usr/share/applications/NixLogo.svg
+Terminal=true
+Type=Application
+Categories=Application;

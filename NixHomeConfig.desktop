@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Nix Home Manager
+Comment=Open home.nix inside NeoVim
+Exec=bash -c "nvim /home/mika/.config/home-manager/home.nix"
+Icon=/usr/share/applications/NixLogo.svg
+Terminal=true
+Type=Application
+Categories=Application;

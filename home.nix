@@ -4,24 +4,35 @@
   home.username = "mika";
   home.homeDirectory = "/home/mika";
 
-  home.packages = [
-    pkgs.lazygit
-    pkgs.neovim
-    pkgs.zoxide
-    pkgs.tldr
+  home.packages = with pkgs; [
+    lazygit
+    neovim
+    zoxide
+    tldr
 
-    pkgs.vscode
-    pkgs.anki
+    anki
     
-    pkgs.dotnetCorePackages.sdk_10_0-bin
-    pkgs.javaPackages.compiler.openjdk17
+    javaPackages.compiler.openjdk17
+    zlib
+    dotnetCorePackages.sdk_8_0-bin
+    python313Packages.python
+
+    gtk4
+
+    gimp2-with-plugins
+    blender
     
-    pkgs.signal-desktop
-    pkgs.blender
-    
-    pkgs.whatsapp-electron
-    pkgs.thunderbird
-    pkgs.obsidian
+    signal-desktop
+    whatsapp-electron
+    thunderbird
+    discord
+    telegram-desktop
+
+    obsidian
+    xournalpp
+    gaphor
+
+    spotify-qt
   ];
 
   home.shellAliases = {
@@ -40,15 +51,6 @@
       icon = "nvim";
       terminal = true;
       categories = [ "Utility" "TextEditor" "Development" ];
-    };
-
-    vscode = {
-      name = "Visual Studio Code";
-      genericName = "Code Editor";
-      exec = "code %F";
-      icon = "vscode";
-      terminal = false;
-      categories = [ "Development" "IDE" ];
     };
 
     anki = {

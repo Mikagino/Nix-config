@@ -42,7 +42,7 @@
       };
     in {
       nixosConfigurations = {
-        hauptquartier = mkHost "hauptquartier";
+        hauptquartier = mkHost "Hauptquartier";
         # Adding new hosts is trivial:
         # laptop = mkHost "laptop";
         # server = mkHost "server";

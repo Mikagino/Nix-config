@@ -1,13 +1,16 @@
-#
 {
-  description = "NixOS config with host discovery, based on: https://blog.ricardof.dev/modularizing-your-nixos-config/";
+  description = "NixOS config";
 
   inputs = {
-    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.zst";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    niri.url = "github:sodiboo/niri-flake";
+    vicinae.url = "github:vicinaehq/vicinae";
+    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    nix-colors.url = "github:misterio77/nix-colors";
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
@@ -27,11 +30,12 @@
               useUserPackages = true;
               users.fuhrmann = import ./modules/user;
               extraSpecialArgs = { inherit inputs; };
-#               sharedModules = [
-#                 inputs.vicinae.homeManagerModules.default
-#                 inputs.noctalia.homeModules.default
-#                 inputs.nix-colors.homeManagerModules.default
-#               ];
+              sharedModules = [
+                inputs.niri.homeModules.niri
+                inputs.vicinae.homeManagerModules.default
+                inputs.noctalia.homeModules.default
+                inputs.nix-colors.homeManagerModules.default
+              ];
             };
           }
         ];

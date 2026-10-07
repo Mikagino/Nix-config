@@ -28,7 +28,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.fuhrmann = import ./modules/user;
+              users.mika = import ./modules/user;
               extraSpecialArgs = { inherit inputs; };
               sharedModules = [
                 inputs.niri.homeModules.niri

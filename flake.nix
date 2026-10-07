@@ -28,7 +28,6 @@
               users.fuhrmann = import ./modules/user;
               extraSpecialArgs = { inherit inputs; };
               sharedModules = [
-                inputs.niri.homeModules.niri
                 inputs.vicinae.homeManagerModules.default
                 inputs.noctalia.homeModules.default
                 inputs.nix-colors.homeManagerModules.default
@@ -39,7 +38,7 @@
       };
     in {
       nixosConfigurations = {
-        fritz = mkHost "hauptquartier";
+        hauptquartier = mkHost "hauptquartier";
         # Adding new hosts is trivial:
         # laptop = mkHost "laptop";
         # server = mkHost "server";

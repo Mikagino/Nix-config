@@ -28,7 +28,7 @@
     tldr
 
     anki
-    
+
     javaPackages.compiler.openjdk17
     zlib
     dotnetCorePackages.sdk_8_0-bin
@@ -38,7 +38,7 @@
 
     gimp2-with-plugins
     blender
-    
+
     signal-desktop
     whatsapp-electron
     thunderbird
@@ -95,6 +95,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager = {
     enable = true;
-    path = "~/.nix-config/home-manager/home.nix";
+    path = "~/.nix-config/modules/default.nix";
   };
 }

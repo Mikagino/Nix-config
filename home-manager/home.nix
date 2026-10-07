@@ -49,7 +49,7 @@
     xournalpp
     gaphor
 
-    spotify-qt
+    spotify
   ];
 
   home.shellAliases = {

@@ -27,11 +27,11 @@
               useUserPackages = true;
               users.fuhrmann = import ./modules/user;
               extraSpecialArgs = { inherit inputs; };
-              sharedModules = [
-                inputs.vicinae.homeManagerModules.default
-                inputs.noctalia.homeModules.default
-                inputs.nix-colors.homeManagerModules.default
-              ];
+#               sharedModules = [
+#                 inputs.vicinae.homeManagerModules.default
+#                 inputs.noctalia.homeModules.default
+#                 inputs.nix-colors.homeManagerModules.default
+#               ];
             };
           }
         ];

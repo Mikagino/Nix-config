@@ -19,4 +19,10 @@
 
   # Configure console keymap
   console.keyMap = "de-latin1-nodeadkeys";
+
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "de";
+    variant = "nodeadkeys";
+  };
 }

@@ -12,7 +12,6 @@
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "26.05"; # Please read the comment before changing.
-  nixpkgs.config.allowUnfree = true;
 
   # Enable xdg to have the programs available in KDE
   xdg = {

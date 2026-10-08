@@ -31,7 +31,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.mika = import ./modules/users;
+              users.mika = import ./modules/user;
               extraSpecialArgs = { inherit inputs; };
               #sharedModules = [
                 #inputs.niri.homeModules.niri

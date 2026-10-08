@@ -3,8 +3,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
-
   environment.systemPackages = with pkgs; [
   ];
 

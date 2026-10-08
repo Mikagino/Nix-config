@@ -7,9 +7,9 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri.url = "github:sodiboo/niri-flake";
-    vicinae.url = "github:vicinaehq/vicinae";
-    noctalia.url = "github:noctalia-dev/noctalia-shell";
+    #niri.url = "github:sodiboo/niri-flake";
+    #vicinae.url = "github:vicinaehq/vicinae";
+    #noctalia.url = "github:noctalia-dev/noctalia-shell";
     nix-colors.url = "github:misterio77/nix-colors";
   };
 
@@ -31,9 +31,9 @@
               users.mika = import ./modules/user;
               extraSpecialArgs = { inherit inputs; };
               sharedModules = [
-                inputs.niri.homeModules.niri
-                inputs.vicinae.homeManagerModules.default
-                inputs.noctalia.homeModules.default
+                #inputs.niri.homeModules.niri
+                #inputs.vicinae.homeManagerModules.default
+                #inputs.noctalia.homeModules.default
                 inputs.nix-colors.homeManagerModules.default
               ];
             };

@@ -94,6 +94,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager = {
     enable = true;
-    path = "~/.nix-config/modules/users/default.nix";
+    #path = "~/.nix-config/modules/users/default.nix";
   };
 }

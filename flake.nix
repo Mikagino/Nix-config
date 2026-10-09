@@ -2,7 +2,7 @@
   description = "NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -31,8 +31,8 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.mika = import ./modules/user;
-              extraSpecialArgs = { inherit inputs; };
+              users.hauptquartier = import ./modules/user;
+              extraSpecialArgs = { inherit inputs home-manager; };
               #sharedModules = [
                 #inputs.niri.homeModules.niri
                 #inputs.vicinae.homeManagerModules.default
@@ -45,7 +45,7 @@
       };
     in {
       nixosConfigurations = {
-        hauptquartier = mkHost "Hauptquartier";
+        hauptquartier = mkHost "hauptquartier";
         # Adding new hosts is trivial:
         # laptop = mkHost "laptop";
         # server = mkHost "server";

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "mika";
+  home.username = "hauptquartier";
   home.homeDirectory = "/home/mika";
 
   # This value determines the Home Manager release that your configuration is
@@ -18,6 +18,8 @@
     enable = true;
     mime.enable = true;
   };
+
+  programs.bash.enable = true;
 
   home.packages = with pkgs; [
     git

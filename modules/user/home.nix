@@ -19,21 +19,8 @@
     mime.enable = true;
   };
 
-  programs.bash.enable = true;
-
   home.packages = with pkgs; [
-    git
-    lazygit
-    neovim
-    zoxide
-    tldr
-
     anki
-
-    javaPackages.compiler.openjdk17
-    zlib
-    dotnetCorePackages.sdk_8_0-bin
-    python313Packages.python
 
     gtk4
 
@@ -46,17 +33,8 @@
     discord
     telegram-desktop
 
-    obsidian
-    xournalpp
-    gaphor
-
     spotify
   ];
-
-  programs.lutris = {
-    enable = true;
-    defaultWinePackage = pkgs.proton-ge-bin;
-  };
 
   home.shellAliases = {
     blender = "nixGLNvidia blender";

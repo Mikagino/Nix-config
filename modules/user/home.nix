@@ -53,6 +53,11 @@
     spotify
   ];
 
+  programs.lutris = {
+    enable = true;
+    defaultWinePackage = pkgs.proton-ge-bin;
+  };
+
   home.shellAliases = {
     blender = "nixGLNvidia blender";
   };

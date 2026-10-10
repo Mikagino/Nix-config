@@ -4,6 +4,7 @@
   services.printing.enable = true;
 
   environment.systemPackages = with pkgs; [
+    home-manager
   ];
 
   programs.firefox.enable = true;

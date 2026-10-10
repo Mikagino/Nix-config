@@ -1,6 +1,5 @@
 { ... }:
 {
-  networking.hostName = "Hauptquartier"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Berlin";

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "hauptquartier";
+  home.username = "mika";
   home.homeDirectory = "/home/mika";
 
   # This value determines the Home Manager release that your configuration is

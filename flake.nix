@@ -9,6 +9,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    blender-bin.url = "https://flakehub.com/f/edolstra/blender-bin/*";
+
     # optional stuff from the source config
     #niri.url = "github:sodiboo/niri-flake";
     #vicinae.url = "github:vicinaehq/vicinae";
@@ -16,15 +18,21 @@
     #nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
+  outputs = { self, nixpkgs, home-manager, blender-bin, ... } @ inputs:
     let
       # Helper for automatic host discovery
       mkHost = hostname: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
+
         modules = [
           ./hosts/${hostname}
           ./modules/system
+
+          environment.systemPackages = with self.inputs.blender-bin.packages.${system}; [
+            default
+          ];
+
           home-manager.nixosModules.home-manager
           {
             networking.hostName = hostname;

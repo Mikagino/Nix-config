@@ -1,22 +1,32 @@
 { config, pkgs, ... }:
 
 {
-  programs.git = [
-    enable = true;
-    userName = "Mikagino";
-    userEmail = "angeli.mika@gmail.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-      safe.directory = "~/.nix-config/";
-    };
-  ]
-
-  programs.bash.enable = true;
-
   home.packages = with pkgs; [
-    lazygit
     neovim
-    zoxide
     tldr
   ];
+
+  programs.zoxide = {
+    enable = true;
+  };
+
+  programs.git = {
+    enable = true;
+    settings.user = {
+      name = "Mikagino";
+      email = "angeli.mika@gmail.com";
+    };
+
+    settings = {
+      init = {
+        defaultBranch = "main";
+        safe.directory = "~/.nix-config/";
+      };
+    };
+    lfs.enable = true;
+  };
+
+  programs.lazygit = {
+    enable = true;
+  };
 }

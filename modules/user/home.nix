@@ -25,7 +25,6 @@
     gtk4
 
     gimp2-with-plugins
-    blender
 
     signal-desktop
     whatsapp-electron
@@ -36,9 +35,9 @@
     spotify
   ];
 
-  home.shellAliases = {
-    blender = "nixGLNvidia blender";
-  };
+#   home.shellAliases = {
+#     blender = "nixGLNvidia blender";
+#   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -79,6 +78,6 @@
   # Let Home Manager install and manage itself.
   programs.home-manager = {
     enable = true;
-    path = "~/.nix-config/modules/user";
+    #path = "~/.nix-config/modules/user";
   };
 }

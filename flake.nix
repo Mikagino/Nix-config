@@ -29,10 +29,6 @@
           ./hosts/${hostname}
           ./modules/system
 
-          environment.systemPackages = with self.inputs.blender-bin.packages.${system}; [
-            default
-          ];
-
           home-manager.nixosModules.home-manager
           {
             networking.hostName = hostname;

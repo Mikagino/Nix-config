@@ -9,6 +9,9 @@
   # enable nvidia
   services.xserver.videoDrivers = ["nvidia"];
 
+  # enable system wide CUDA support
+  nixpkgs.config.cudaSupport = true;
+
   hardware.nvidia = {
 
     # Modesetting is required.

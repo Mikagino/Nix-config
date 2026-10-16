@@ -4,6 +4,8 @@
   home.packages = with pkgs; [
     neovim
     tldr
+    screenfetch
+    nix-output-monitor
   ];
 
   programs.zoxide = {
@@ -29,4 +31,6 @@
   programs.lazygit = {
     enable = true;
   };
+
+  programs.nix-your-shell.nix-output-monitor.enable = true;
 }

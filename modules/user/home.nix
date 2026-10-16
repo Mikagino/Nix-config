@@ -33,6 +33,8 @@
     telegram-desktop
 
     spotify
+
+    audacity
   ];
 
 #   home.shellAliases = {
@@ -79,5 +81,10 @@
   programs.home-manager = {
     enable = true;
     #path = "~/.nix-config/modules/user";
+  };
+
+  # hardware monitor
+  programs.btop = {
+    enable = true;
   };
 }

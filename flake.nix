@@ -19,7 +19,13 @@
     #nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, blender-bin, ... } @ inputs:
+  outputs = { self,
+              nixpkgs,
+              home-manager,
+              blender-bin,
+              nixpkgs-unstable,
+              ...
+              } @ inputs:
     let
       # Helper for automatic host discovery
       mkHost = hostname: nixpkgs.lib.nixosSystem {

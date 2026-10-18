@@ -2,15 +2,7 @@
   description = "NixOS config";
 
   inputs = {
-    nixpkgs = {
-      url = "github:nixos/nixpkgs/release-26.05";
-      config = {
-        allowUnfree = true;
-        packageOverrides = pkgs: {
-          unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {};
-          };
-        };
-      };
+    nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";

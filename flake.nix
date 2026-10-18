@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
+    unstable.url = "github:nixos/nixpkgs-channels/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -32,6 +33,15 @@
 
         # allow uploading scripts to arduino by giving serial port permission
         #users.users.mika.extraGroups = [ "dialout" ];
+
+        # overlay unstable packages to install selected unstable packages
+        overlays = {
+          pkg-sets = (
+            final: prev: {
+              unstable = import inputs.unstable { system = final.system; };
+            }
+          );
+        };
 
         modules = [
           ./hosts/${hostname}

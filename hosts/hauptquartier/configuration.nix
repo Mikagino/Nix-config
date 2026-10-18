@@ -13,9 +13,6 @@
   nixpkgs.config = {
     allowUnfree = true;
     allowUnfreePredicate = (_: true);
-    packageOverrides = pkgs: {
-      unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {};
-    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are

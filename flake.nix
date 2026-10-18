@@ -26,6 +26,9 @@
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
 
+        # allow uploading scripts to arduino by giving serial port permission
+        #users.users.mika.extraGroups = [ "dialout" ];
+
         modules = [
           ./hosts/${hostname}
           ./modules/system

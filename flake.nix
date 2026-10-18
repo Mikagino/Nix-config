@@ -2,8 +2,15 @@
   description = "NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/release-26.05";
-    nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/release-26.05";
+      config = {
+        allowUnfree = true;
+        packageOverrides = pkgs: {
+          unstable = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/nixos-unstable.tar.gz") {};
+          };
+        };
+      };
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -23,7 +30,6 @@
               nixpkgs,
               home-manager,
               blender-bin,
-              nixpkgs-unstable,
               ...
               } @ inputs:
     let

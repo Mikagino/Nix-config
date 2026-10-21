@@ -5,10 +5,12 @@
 { 
   inputs,
   self,
+  lib,
+  config,
   ...
 }: {
   # ----- Modules -----
-  flake.nixosConfiguration.hauptquartier = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfiguration.hauptquartier = lib.nixosSystem {
     modules = with self.nixosModules; [
       common
       audio
@@ -19,11 +21,14 @@
       nix-config
       nvidia
       user-mika
+    ]
+    ++ [
+      self.nixosModules.hauptquartier
     ];
   };
 
   # ----- Host Setup -----
-  flake.nixosModules.hauptquartierModule = {
+  flake.nixosModules.hauptquartier = {
     networking.hostName = "hauptquartier";
     system.stateVersion = "26.05";
 

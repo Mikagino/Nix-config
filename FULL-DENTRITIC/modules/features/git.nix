@@ -7,8 +7,10 @@
       enable = true;
       lfs.enable = true;
       settings = {
-        user.name = "Mikagino";
-        user.email = "angeli.mika@gmail.com";
+        user = {
+          name = "Mikagino";
+          email = "angeli.mika@gmail.com";
+        };
         init = {
           defaultBranch = "main";
           safe.directory = "~/.nix-config/";

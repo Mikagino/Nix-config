@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
- # nix helper which cleans up automatically every week
+  # nix helper which cleans up automatically every week
   programs.nh = {
     enable = true;
     clean.enable = true;

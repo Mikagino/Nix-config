@@ -26,6 +26,14 @@
               ...
               } @ inputs:
     let
+      # overlay unstable packages to install selected unstable packages
+        unstable = final: prev: {
+              unstable = import inputs.unstable {
+                inherit (final.stdenv.hostPlatform) system;
+                inherit (final) config;
+              };
+        };
+
       # Helper for automatic host discovery
       mkHost = hostname: nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -34,18 +42,22 @@
         # allow uploading scripts to arduino by giving serial port permission
         #users.users.mika.extraGroups = [ "dialout" ];
 
-        # overlay unstable packages to install selected unstable packages
-        overlays = {
-          pkg-sets = (
-            final: prev: {
-              unstable = import inputs.unstable { system = final.system; };
+        modules = 
+        let
+          mkOverlay = ({config, packages, ...}:
+            {
+              nixpkgs.overlays = [
+                unstable
+              ];
             }
           );
-        };
-
-        modules = [
+        in
+        [
           ./hosts/${hostname}
           ./modules/system
+          mkOverlay
+          
+          #config.nix nixpkgs.overlays = [ unstable-overlay ];
 
           home-manager.nixosModules.home-manager
           {

@@ -9,10 +9,6 @@
 			thunderbird
 			discord
 			telegram-desktop
-
-			spotify # TODO: move somehwere else
-
-			audacity # TODO: move somehwere else
 		];
 	};
 }

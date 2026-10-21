@@ -2,7 +2,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.nvidia = { config, pkgs, ... }: {
+  flake.nixosModules.nvidia = { pkgs, ... }: {
     # enable openGL
     hardware.graphics = {
       enable = true;
@@ -43,7 +43,6 @@
       nvidiaSettings = true;
 
       # Optionally, you may need to select the appropriate driver version for your specific GPU.
-      #package = config.boot.kernelPackages.nvidiaPackages.stable;
       branch = "stable";
     };
   };

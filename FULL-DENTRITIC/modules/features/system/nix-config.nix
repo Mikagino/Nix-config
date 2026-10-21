@@ -7,7 +7,7 @@
 		home-manager.flakeModules.home-manager
   ];
 
-	flake.nixosModules.nix-config = {pkgs, ... }: {
+	flake.nixosModules.nix-config = { pkgs, ... }: {
 		nixpkgs.config.allowUnfree = true;
 
     nix = {

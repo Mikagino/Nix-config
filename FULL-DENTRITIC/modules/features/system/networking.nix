@@ -2,7 +2,7 @@
 	inputs,
 	...
 }: {
-	flake.nixosModules.networking = {pkgs, ... }: {
+	flake.nixosModules.networking = { pkgs, ... }: {
 		networking.networkmanager.enable = true;
 
 		# Enable the OpenSSH daemon.

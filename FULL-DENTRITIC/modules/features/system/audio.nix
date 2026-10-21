@@ -2,7 +2,7 @@
 	inputs,
 	...
 }: {
-	flake.nixosModules.audio = {pkgs, ... }: {
+	flake.nixosModules.audio = { pkgs, ... }: {
 		# Enable sound with pipewire.
 		services.pulseaudio.enable = false;
 		security.rtkit.enable = true;

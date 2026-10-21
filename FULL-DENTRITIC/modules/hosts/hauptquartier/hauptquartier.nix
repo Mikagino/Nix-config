@@ -13,13 +13,17 @@
   flake.nixosConfigurations.hauptquartier = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       common
+
       audio
+      cuda
       desktop-env
-      #git
+      game-dev
+      gaming
       locale
       networking
       nix-config
       nvidia
+      
       mika
     ]
     ++ [

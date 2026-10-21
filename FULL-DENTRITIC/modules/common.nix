@@ -2,7 +2,7 @@
   inputs,
   ...
 }: {
-  flake.nixosModules.common = {pkgs, ... }: {
+  flake.nixosModules.common = { pkgs, ... }: {
     # Use the systemd-boot EFI boot loader.
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
@@ -13,9 +13,12 @@
     programs.bash.enable = true;
 
     environment.systemPackages = with pkgs; [
-      kitty
       home-manager
+      kitty
+      #nixfmt
       vscode
+
+      # kde packages
       kdePackages.ark
 			kdePackages.dolphin
 			kdePackages.filelight

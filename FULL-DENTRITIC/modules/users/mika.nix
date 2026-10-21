@@ -21,6 +21,7 @@
 			pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
 			modules = with self.homeModules; [
 				git
+				kitty
 				messengers
 				mika
 				nix-config
@@ -37,6 +38,7 @@
 			stateVersion = "26.05";
 
 			packages = with pkgs; [
+				kitty
 				lazygit
 			];
 		};

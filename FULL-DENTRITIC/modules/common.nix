@@ -13,6 +13,7 @@
     programs.bash.enable = true;
 
     environment.systemPackages = with pkgs; [
+      kitty
       home-manager
       vscode
       kdePackages.ark
@@ -20,5 +21,11 @@
 			kdePackages.filelight
       kdePackages.partitionmanager
     ];
+
+    environment.plasma6.excludePackages = with pkgs.kdePackages; [
+        konsole
+        oxygen
+        plasma-browser-integration
+      ];
   };
 }

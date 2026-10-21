@@ -14,6 +14,10 @@
 
     environment.systemPackages = with pkgs; [
       vscode
+      kdePackages.ark
+			kdePackages.dolphin
+			kdePackages.filelight
+      kdePackages.partitionmanager
     ];
   };
 }

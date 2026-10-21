@@ -13,6 +13,7 @@
     programs.bash.enable = true;
 
     environment.systemPackages = with pkgs; [
+      home-manager
       vscode
       kdePackages.ark
 			kdePackages.dolphin

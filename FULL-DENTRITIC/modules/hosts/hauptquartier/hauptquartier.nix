@@ -10,17 +10,17 @@
   ...
 }: {
   # ----- Modules -----
-  flake.nixosConfiguration.hauptquartier = lib.nixosSystem {
+  flake.nixosConfigurations.hauptquartier = inputs.nixpkgs.lib.nixosSystem {
     modules = with self.nixosModules; [
       common
       audio
       desktop-env
-      git
+      #git
       locale
       networking
       nix-config
       nvidia
-      user-mika
+      mika
     ]
     ++ [
       self.nixosModules.hauptquartier
@@ -48,7 +48,7 @@
       extraModulePackages = [ ];
     };
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-    hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    hardware.cpu.amd.updateMicrocode = true;
 
     # ----- Disks -----
     fileSystems."/" =

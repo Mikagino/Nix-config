@@ -2,9 +2,15 @@
 	inputs,
 	...
 }: {
-	flake.nixosModules.audio = {pkgs, ... }: {
+	flake.nixosModules.desktop-env = {pkgs, ... }: {
+    environment.systemPackages = with pkgs; [
+			git
+		];
+  };
+
+	flake.homeModules.git = {pkgs, ... }: {
     programs.git = {
-      enable = true;
+      #enable = true;
       lfs.enable = true;
       settings = {
         user = {

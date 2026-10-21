@@ -8,10 +8,7 @@
   ];
 
 	flake.nixosModules.nix-config = {pkgs, ... }: {
-		nixpkgs.config = {
-      allowUnfree = true;
-      allowUnfreePredicate = (_: true);
-    };
+		nixpkgs.config.allowUnfree = true;
 
     nix = {
       package = pkgs.nix;
@@ -33,5 +30,12 @@
       clean.extraArgs = "--keep-since 7d --keep 3";
       flake = "/home/mika/.nix-config";
     };
+	};
+
+  flake.homeModules.nix-config = {
+		#imports = [inputs.nix-index-database.homeModules.default];
+		# see https://github.com/hercules-ci/flake-parts/issues/74
+		nixpkgs.config.allowUnfree = true;
+		#nixpkgs.overlays = [inputs.self.overlays.unstable];
 	};
 }

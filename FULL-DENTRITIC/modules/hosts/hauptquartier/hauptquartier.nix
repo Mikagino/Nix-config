@@ -2,7 +2,7 @@
 # Setup for a single machine, importing only the necessary modules.
 # ------------------------------------------------------------------------------------------
 
-{ 
+{
   inputs,
   self,
   lib,
@@ -15,15 +15,15 @@
       common
 
       audio
-      cuda
       desktop-env
       game-dev
       gaming
+      japanese
       locale
       networking
       nix-config
       nvidia
-      
+
       mika
     ]
     ++ [

@@ -3,8 +3,8 @@
 	...
 }: {
 	flake.nixosModules.gaming = { pkgs, ... }: {
-		# ----- Wine -----
 		environment.systemPackages = with pkgs; [
+			# ----- Wine -----
 			wineWow64Packages.stable
 			winetricks
 		];
@@ -27,7 +27,7 @@
 
 			# Overrides for the default game options
 			package =
-				pkgs.unstable.steam.override {
+				pkgs.steam.override {
 					extraEnv = {
 						MANGOHUD = "0"; # disable mangohud by default
 						STEAMDECK = "1"; # skips launchers for some games
@@ -36,8 +36,10 @@
 					};
 				};
 		};
+	};
 
 		# ----- Lutris -----
+	flake.homeModules.gaming = {pkgs, ... }: {
 		programs.lutris = {
 			enable = false;
 			defaultWinePackage = pkgs.proton-ge-bin;

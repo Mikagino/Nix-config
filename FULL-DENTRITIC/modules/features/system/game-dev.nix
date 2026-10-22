@@ -6,7 +6,9 @@
 		environment.systemPackages = with pkgs; [
 			godot-mono
 			#godot_4_5-mono
-			(blender.withPackages(ps: [ ps.pyserial ps.fs ]))
+			#(blender.withPackages(ps: [ ps.pyserial ps.fs ]))
+			#inputs.blender-cuda.packages.${pkgs.system}.blender-with-cuda
+			inputs.blender-cuda.packages."${system}".default
 		];
 	};
 
@@ -49,7 +51,7 @@
 				];
 		};
 
-		home.packages = [
+		home.packages = with pkgs; [
 			dotnetCorePackages.dotnet_9.sdk # For Godot-Mono VSCode-Extension CSharp
 		];
 	};

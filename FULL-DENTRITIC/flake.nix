@@ -14,6 +14,9 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # blender binary, including cuda
+    blender-cuda.url = "github:edolstra/nix-warez?dir=blender";
   };
 
   outputs = inputs:

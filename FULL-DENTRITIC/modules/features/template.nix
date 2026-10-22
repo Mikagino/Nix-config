@@ -9,7 +9,7 @@
   };
 
 	flake.homeModules.NAME = {pkgs, ... }: {
-		home.packages = [
+		home.packages = with pkgs; [
       # Insert package/s
     ];
 	};

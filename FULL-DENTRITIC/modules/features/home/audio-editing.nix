@@ -3,7 +3,7 @@
 	...
 }: {
 	flake.homeModules.audio-editing = {pkgs, ... }: {
-		home.packages = [
+		home.packages = with pkgs; [
       audacity
     ];
 	};

@@ -1,5 +1,4 @@
 {
-	inputs,
 	...
 }: {
 	flake.nixosModules.locale = { pkgs, ... }: {
@@ -17,8 +16,30 @@
 			LC_TIME = "de_DE.UTF-8";
 		};
 
+    # ----- Fonts -----
+    # https://nixos.wiki/wiki/Fonts#Installing_all_nerdfonts
+    fonts = {
+      packages = with pkgs; [
+        ubuntu-classic
+        liberation_ttf
+
+        nerd-fonts.fira-code
+        nerd-fonts.droid-sans-mono
+        nerd-fonts.arimo
+      ];
+
+      fontconfig = {
+        defaultFonts = {
+          serif = [  "Liberation Serif" ];
+          sansSerif = [ "Ubuntu" ];
+          monospace = [ "Ubuntu Mono" ];
+        };
+      };
+    };
+
 		# Configure console keymap
 		console.keyMap = "de-latin1-nodeadkeys";
+    console.font = "Droid Sans Mono";
 
 		# Configure keymap in X11
 		services.xserver.xkb = {

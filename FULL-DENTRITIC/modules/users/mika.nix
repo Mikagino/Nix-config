@@ -19,12 +19,6 @@
 	flake.homeConfigurations.mika =
 		inputs.home-manager.lib.homeManagerConfiguration {
 			pkgs = import inputs.nixpkgs {system = "x86_64-linux";};
-
-      xdg = {
-        enable = true;
-        mime.enable = true;
-      };
-
 			modules = with self.homeModules; [
       	audio-editing
 				draw
@@ -43,6 +37,11 @@
 	# Setup home manager
 	flake.homeModules.mika = { pkgs, ... }: {
 		programs.home-manager.enable = true;
+
+		xdg = {
+			enable = true;
+			mime.enable = true;
+		};
 
 		home = {
 			username = "mika";

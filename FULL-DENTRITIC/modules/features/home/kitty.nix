@@ -1,5 +1,4 @@
 {
-	inputs,
 	...
 }: {
 	flake.homeModules.kitty = {pkgs, ... }: {
@@ -19,7 +18,7 @@
 				# cursor_shape = "block";
 				confirm_os_window_close = 1;
 				sync_to_monitor = "yes";
-				
+
 				# Tab bar
 				tab_bar_edge = "top";
 				tab_bar_style = "slant";

@@ -1,5 +1,4 @@
 {
-	inputs,
 	...
 }: {
 	flake.nixosModules.desktop-env = { pkgs, ... }: {

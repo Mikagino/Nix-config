@@ -1,5 +1,4 @@
 {
-	inputs,
 	...
 }: {
 	flake.nixosModules.gaming = { pkgs, ... }: {
@@ -11,7 +10,7 @@
 
 		# optimize system performance for gaming
 		programs.gamemode.enable = true;
-		
+
 		# ----- Steam -----
 		programs.steam = {
 			enable = true;

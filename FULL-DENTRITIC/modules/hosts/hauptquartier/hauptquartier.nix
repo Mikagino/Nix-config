@@ -6,7 +6,6 @@
   inputs,
   self,
   lib,
-  config,
   ...
 }: {
   # ----- Modules -----
@@ -23,6 +22,7 @@
       networking
       nix-config
       nvidia
+      shell-aliases
 
       mika
     ]

@@ -22,6 +22,9 @@
 			kdePackages.dolphin
 			kdePackages.filelight
       kdePackages.partitionmanager
+
+      # MOST IMPORTANT PACKAGE! KEEP IN CONFIG AT ALL COST!
+      # haskellPackages.Fortnite-Hack-Cheats-Free-V-Bucks-Generator
     ];
 
     environment.plasma6.excludePackages = with pkgs.kdePackages; [

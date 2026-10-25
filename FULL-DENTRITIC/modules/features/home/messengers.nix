@@ -8,6 +8,7 @@
 			thunderbird
 			discord
 			telegram-desktop
+			zoom-us
 		];
 	};
 }

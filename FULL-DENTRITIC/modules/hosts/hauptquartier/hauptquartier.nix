@@ -13,6 +13,7 @@
     modules = with self.nixosModules; [
       common
 
+      app-image
       audio
       desktop-env
       game-dev

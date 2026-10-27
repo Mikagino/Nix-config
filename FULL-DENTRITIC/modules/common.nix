@@ -6,13 +6,6 @@
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
 
-    # Enable the direct execution of AppImages
-    programs.appimage = {
-      enable = true;
-      binfmt = true;
-      # package = pkgs.appimage-run.override { extraPkgs = pkgs: [ pkgs.libthai ]; }; # thai language lib, sometimes necessary
-    };
-
     services.printing.enable = true;
 
     programs.firefox.enable = true;

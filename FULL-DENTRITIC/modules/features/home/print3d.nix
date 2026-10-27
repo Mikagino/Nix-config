@@ -1,58 +1,51 @@
-{
-  inputs,
-  pkgs,
-  lib,
-  ...
-}:
+# Docs: https://nixos.org/manual/nixpkgs/stable/#sec-pkgs-appimageTools
 
-# Based off the excellent post on reddit here: https://www.reddit.com/r/NixOS/comments/19b7k5e/how_to_properly_install_pkgs_to_the_latest_version/
-# This is updated to work with nix 24.05, and also installs a desktop entry so cura can be found in kde start menu.
+{ lib, appimageTools, fetchurl }:
+
 let
-  cura5 = pkgs.appimageTools.wrapType2 rec {
-    name = "cura5";
-    version = "5.7.1";
-    src = builtins.fetchurl {
-      url = "https://github.com/Ultimaker/Cura/releases/download/${version}/UltiMaker-Cura-${version}-linux-X64.AppImage";
-      sha256 = {
-        "5.7.1" = "2d9303d1fa3c4d2943109b29bd391aef6e2562ae4482b3a50e4c0c92d5ea013c";
-      }."${version}";
-    };
-    extraPkgs = pkgs: with pkgs; [ ];
+  owner = "Ultimaker";
+  pname = "Cura";
+  version = "5.13.0";
+  appImageName = "UltiMaker-Cura-5.13.0-linux-X64.AppImage";
+
+  # Fetch AppImage (wrapType2 wont accept archives as source)
+  src = fetchurl {
+    url = "https://github.com/${owner}/${pname}/releases/download/${version}/${owner}-${pname}-${version}-linux-X64.AppImage";
+    #     "https://github.com/Ultimaker/Cura/releases/download/5.13.0/UltiMaker-Cura-5.13.0-linux-X64.AppImage"
+    sha256 = ""; # <-- dummy hash: after first compilation this line will give an error with the correct hash
   };
 
-  curaLauncher = pkgs.writeShellScriptBin "cura" ''
-    # AppImage version of Cura loses current working directory and treats all paths relative to $HOME.
-    # So we convert each of the files passed as argument to an absolute path.
-    # This fixes use cases like `cd /path/to/my/files; cura mymodel.stl anothermodel.stl`.
-    args=()
-    for a in "$@"; do
-      if [ -e "$a" ]; then
-        a="$(realpath "$a")"
-      fi
-      args+=("$a")
-    done
-    exec "${cura5}/bin/cura5" "''${args[@]}"
-  '';
+  # Extract content from AppImage for creating a desktop file later
+  appimageContents = appimageTools.extract {
+    inherit pname version src;
+  };
 
-  curaDesktopEntry = ''
-    [Desktop Entry]
-    Version=1.0
-    Name=Cura
-    Comment=Cura 3D Printing Software
-    Exec=${curaLauncher}/bin/cura %f
-    Icon=cura
-    Terminal=false
-    Type=Application
-    Categories=Graphics;3DGraphics;
-  '';
+  # # Additional local content needed for desktop file
+  # localContents = /etc/nixos/localPackages/${pname};
+
 in {
-  flake.homeModules.print3d = { pkgs, ... }: {
-    home.packages = with pkgs; [
-      curaLauncher
-    ];
+  flake.homeModules.print3d = {pkgs, ... }: {
+    appimageTools.wrapType2 {
+      inherit pname version src;
 
-    home.file = {
-      ".local/share/applications/cura.desktop".text = curaDesktopEntry;
+      # 1. Add desktop file
+      # 2. Let desktop file start package
+      # 3. Add icons for desktop file
+      # Paths and files can be found in the extracted folder within /nix/store
+      extraInstallCommands = ''
+        install -m 444 -D ${appimageContents}/${pname}.desktop -t $out/share/applications
+        substituteInPlace $out/share/applications/${pname}.desktop \
+          --replace 'Exec=AppRun' 'Exec=${pname}'
+        cp -r ${appimageContents}/usr/share/icons $out/share
+      '';
+
+      meta = with lib; {
+        homepage = "https://github.com/${powner}/${pname}";
+        description = "Short (one-line) description of the package (Displayed on search.nixos.org)";
+        license = licenses.mit; # <-- see https://nixos.org/manual/nixpkgs/stable/#sec-meta-license
+        # maintainers = with lib.maintainers; [ ];
+        platforms = platforms.unix;
+      };
     };
   };
 }

@@ -22,13 +22,15 @@
 			modules = with self.homeModules; [
       	audio-editing
 				draw
+        electronics
 				gaming
 				git
 				kitty
 				messengers
 				office
+        print3d
 				terminal
-				nix-config
+        nix-config
 
 				mika
 			];

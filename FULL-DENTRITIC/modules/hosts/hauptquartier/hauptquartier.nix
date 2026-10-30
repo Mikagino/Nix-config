@@ -23,6 +23,7 @@
       networking
       nix-config
       nvidia
+      python
       shell-aliases
 
       mika

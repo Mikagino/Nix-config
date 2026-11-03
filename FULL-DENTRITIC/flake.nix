@@ -17,6 +17,12 @@
 
     # blender binary, including cuda
     blender-cuda.url = "github:edolstra/nix-warez?dir=blender";
+
+    # Wwise binary in private repo
+    wwise = {
+      url = "github:Mikagino/Wwise-Executables";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs:

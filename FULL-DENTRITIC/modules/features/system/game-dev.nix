@@ -8,7 +8,8 @@
 			#godot_4_5-mono
 			#(blender.withPackages(ps: [ ps.pyserial ps.fs ]))
 			#inputs.blender-cuda.packages.${pkgs.system}.blender-with-cuda
-			inputs.blender-cuda.packages."${system}".default
+			inputs.blender-cuda.packages."${stdenv.hostPlatform.system}".default
+			inputs.wwise.packages."${stdenv.hostPlatform.system}".wwise_2026_1_3_9276
 		];
 	};
 

@@ -57,28 +57,30 @@
     hardware.cpu.amd.updateMicrocode = true;
 
     # ----- Disks -----
-    fileSystems."/" =
-    { device = "/dev/disk/by-uuid/3ecbe42b-4860-46ca-8494-9fbc1143e129";
+    boot.supportedFilesystems = [ "ntfs" ];
+
+    fileSystems."/" = {
+      device = "/dev/disk/by-uuid/3ecbe42b-4860-46ca-8494-9fbc1143e129";
       fsType = "btrfs";
     };
 
-    fileSystems."/home" =
-      { device = "/dev/disk/by-uuid/3ecbe42b-4860-46ca-8494-9fbc1143e129";
-        fsType = "btrfs";
-        options = [ "subvol=home" ];
-      };
+    fileSystems."/home" = {
+      device = "/dev/disk/by-uuid/3ecbe42b-4860-46ca-8494-9fbc1143e129";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
 
-    fileSystems."/nix" =
-      { device = "/dev/disk/by-uuid/3ecbe42b-4860-46ca-8494-9fbc1143e129";
-        fsType = "btrfs";
-        options = [ "subvol=nix" ];
-      };
+    fileSystems."/nix" = {
+      device = "/dev/disk/by-uuid/3ecbe42b-4860-46ca-8494-9fbc1143e129";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
+    };
 
-    fileSystems."/boot" =
-      { device = "/dev/disk/by-uuid/F77E-6B32";
-        fsType = "vfat";
-        options = [ "fmask=0077" "dmask=0077" ];
-      };
+    fileSystems."/boot" = {
+      device = "/dev/disk/by-uuid/F77E-6B32";
+      fsType = "vfat";
+      options = [ "fmask=0077" "dmask=0077" ];
+    };
 
     # ----- Swap (optional) -----
     # Add swap device for allowing to store "cold" pages of virtual RAM memory in a swap file

@@ -5,6 +5,7 @@
 		home.packages = with pkgs; [
 			gaphor
       gimp2-with-plugins
+      #pureref # make it work :(
     ];
 	};
 }

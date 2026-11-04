@@ -3,16 +3,13 @@
 	...
 }: {
 	flake.nixosModules.unstable-overlay = { pkgs, ... }: {
-    nixpkgs.overlays = {
-      stable-packages = final: _prev: {
+    nixpkgs.overlays = [
+      (final: _prev: {
         unstable = import inputs.nixpkgs-unstable {
-          system = final.system;
-          config = {
-            allowUnfree = true;
-          };
+          inherit (final) system config;
         };
-      };
-    };
+      })
+    ];
   };
 }
 

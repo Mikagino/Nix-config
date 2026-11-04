@@ -5,9 +5,9 @@
 	flake.nixosModules.game-dev = { pkgs, ... }: {
 		environment.systemPackages = with pkgs; [
 			godot-mono
+      godotPackages_4_7.godot-mono
 			#godot_4_5-mono
 			#(blender.withPackages(ps: [ ps.pyserial ps.fs ]))
-			#inputs.blender-cuda.packages.${pkgs.system}.blender-with-cuda
 			inputs.blender-cuda.packages."${stdenv.hostPlatform.system}".default
 			inputs.wwise.packages."${stdenv.hostPlatform.system}".wwise_2026_1_3_9276
 		];
@@ -36,20 +36,21 @@
 				];
 				"godotTools.lsp.serverPort" = 6005; # port should match your Godot configuration
 			};
-				extensions = with pkgs.vscode-extensions; [
-					geequlim.godot-tools # For Godot GDScript support
-					woberg.godot-dotnet-tools # For Godot C# support
-					ms-dotnettools.csdevkit
-					ms-dotnettools.csharp
-					ms-dotnettools.vscode-dotnet-runtime
-				]
-				++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-					{ name = "godot-files";
-						publisher = "alfish";
-						version = "0.1.6";
-						sha256 = "sha256-FFtl1QXSa4nGKFUJh5f3R7AV7hZg59Qs5vBZHgSUCUw=";
-					}
-				];
+
+      extensions = with pkgs.vscode-extensions; [
+        geequlim.godot-tools # For Godot GDScript support
+        woberg.godot-dotnet-tools # For Godot C# support
+        ms-dotnettools.csdevkit
+        ms-dotnettools.csharp
+        ms-dotnettools.vscode-dotnet-runtime
+      ]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        { name = "godot-files";
+          publisher = "alfish";
+          version = "0.1.6";
+          sha256 = "sha256-FFtl1QXSa4nGKFUJh5f3R7AV7hZg59Qs5vBZHgSUCUw=";
+        }
+      ];
 		};
 
 		home.packages = with pkgs; [

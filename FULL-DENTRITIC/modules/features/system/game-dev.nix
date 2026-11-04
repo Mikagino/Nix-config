@@ -4,8 +4,9 @@
 }: {
 	flake.nixosModules.game-dev = { pkgs, ... }: {
 		environment.systemPackages = with pkgs; [
-			godot-mono
+      unstable.godot-mono
       godotPackages_4_7.godot-mono
+      godotPackages_4_6.godot-mono
 			#godot_4_5-mono
 			#(blender.withPackages(ps: [ ps.pyserial ps.fs ]))
 			inputs.blender-cuda.packages."${stdenv.hostPlatform.system}".default

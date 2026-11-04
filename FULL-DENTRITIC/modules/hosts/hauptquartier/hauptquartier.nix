@@ -25,6 +25,7 @@
       nvidia
       python
       shell-aliases
+      unstable-overlay
 
       mika
     ]

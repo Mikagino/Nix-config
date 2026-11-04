@@ -23,6 +23,7 @@
       	audio-editing
 				draw
         electronics
+        game-dev
 				gaming
 				git
 				kitty
